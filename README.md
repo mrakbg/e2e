@@ -146,3 +146,11 @@ host: process.env.DB_HOST,  // Pulling DB host from environment variable
   user: process.env.DB_USER,  // Pulling DB username from environment variable
   password: process.env.DB_PASSWORD,  // Pulling DB password from environment variable
   database: process.env.DB_NAME  // Pulling DB name from environment variable
+
+
+
+
+  -e DB_HOST=34.56.34.56 \
+  -e DB_USER=mrakbg \
+  -e DB_PASSWORD=Anuj@1738@ \
+  -e DB_NAME=mydb \
