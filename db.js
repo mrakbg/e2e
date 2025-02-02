@@ -1,11 +1,11 @@
 const mysql = require('mysql2');
 
-// Create a connection to the database (using environment variables or defaults)
+// Create a connection to the database (change these values to match your database configuration)
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST || '34.56.34.56',  // Use environment variable or fallback to default host
-  user: process.env.DB_USER || 'root',         // Use environment variable or fallback to 'root'
-  password: process.env.DB_PASSWORD || 'Anuj@1738@',  // Use environment variable or fallback to a default password
-  database: process.env.DB_NAME || 'mydb'      // Use environment variable or fallback to 'mydb'
+  host: process.env.DB_HOST || '34.56.34.56',  // Default to 'localhost' if DB_HOST is not set
+  user: process.env.DB_USER || 'root',      // Default to 'root' if DB_USER is not set
+  password: process.env.DB_PASSWORD || 'Anuj@1738@', // Default to 'password' if DB_PASSWORD is not set
+  database: process.env.DB_NAME || 'mydb'   // Default to 'mydb' if DB_NAME is not set
 });
 
 // Connect to the database
@@ -29,20 +29,6 @@ function insertUser(name, callback) {
   });
 }
 
-// Function to close the connection to the database
-function closeConnection(callback) {
-  connection.end((err) => {
-    if (err) {
-      console.error('Error closing the database connection:', err);
-      callback(err);
-      return;
-    }
-    console.log('Database connection closed.');
-    callback(null);
-  });
-}
-
 module.exports = {
   insertUser,
-  closeConnection,
 };
