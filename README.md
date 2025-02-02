@@ -141,4 +141,8 @@ Edit
 npm test
 Ensure all tests pass before pushing changes to the repository.
 
-don't forget to create env in system : export DB_PASSWORD="URPASSWROOD"
+don't forget to create env in system : 
+host: process.env.DB_HOST,  // Pulling DB host from environment variable
+  user: process.env.DB_USER,  // Pulling DB username from environment variable
+  password: process.env.DB_PASSWORD,  // Pulling DB password from environment variable
+  database: process.env.DB_NAME  // Pulling DB name from environment variable
