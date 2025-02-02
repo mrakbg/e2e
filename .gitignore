@@ -1,11 +1,1 @@
-# Node.js dependencies
-node_modules/
-
-# Logs
-*.log
-
-# Environment files
-.env
-
-# Temporary files
-*.tmp
+node_modules

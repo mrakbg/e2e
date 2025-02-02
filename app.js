@@ -1,16 +1,35 @@
-// app.js
 const express = require('express');
+const bodyParser = require('body-parser');
+const db = require('./db');  // To interact with the database
+
 const app = express();
+const port = 3000;
 
-// Define a simple route
+// Middleware to parse form data
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve the HTML form on the root route
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+  res.sendFile(__dirname + '/index.html'); // Render the form
 });
 
-// Export the app for testing
-const server = app.listen(3000, () => {
-    console.log('App listening at http://localhost:3000');
+// Handle the form submission
+app.post('/submit', (req, res) => {
+  const userName = req.body.data;  // The 'data' field from the form
+
+  // Insert the user name into the database
+  db.insertUser(userName, (err) => {
+    if (err) {
+      console.error('Error saving to the database:', err);
+      return res.status(500).send('Error saving to the database.');
+    }
+    res.send('Name saved successfully!');
+  });
 });
 
-// Export the server for use in tests
-module.exports = server;
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+
+module.exports = app; // Export the app for testing
