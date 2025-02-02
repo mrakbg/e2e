@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
   host: 'localhost',  // Change this if using CloudSQL
   user: 'root',
-  password: 'Anuj@1738@', // Replace with your DB password
+  password: process.env.DB_PASSWORD, // Pull password from the environment variable
   database: 'mydb' // Replace with your database name
 });
 
