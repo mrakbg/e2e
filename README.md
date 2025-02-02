@@ -140,3 +140,5 @@ Copy
 Edit
 npm test
 Ensure all tests pass before pushing changes to the repository.
+
+don't forget to create env in system : export DB_PASSWORD="URPASSWROOD"
